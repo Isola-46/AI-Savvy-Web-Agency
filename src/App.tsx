@@ -28,13 +28,13 @@ const logosRow2 = [
 const services = [
   {
     icon: Rocket,
-    title: "Lightning Fast Sites",
-    description: "Your website loads before you can blink. No more waiting. Happy visitors, happy you."
+    title: "AI-Powered Websites",
+    description: "Smart, modern websites built faster using advanced AI workflows — without sacrificing creativity or quality."
   },
   {
     icon: Search,
-    title: "Find-Me Magic",
-    description: "We sprinkle secret SEO dust so Google puts you at the top. Be the first thing people see."
+    title: "Elite Visual Systems",
+    description: "Clean layouts, premium UI, powerful branding, and seamless user experience designed to impress."
   },
   {
     icon: RefreshCw,
@@ -321,7 +321,7 @@ export default function App() {
               <div className="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center group-hover:scale-110 transition-transform">
                 <ArrowRight className="w-4 h-4" />
               </div>
-              Start Now
+              Start Your Project
             </button>
 
             {/* Divider */}
@@ -329,8 +329,7 @@ export default function App() {
 
             {/* Paragraph - ADHD Friendly */}
             <p className="text-zinc-400 text-lg sm:text-xl max-w-md leading-relaxed font-light">
-              We use smart computer brains to make your website. 
-              It's super fast. It's really easy. No boring stuff allowed.
+              We harness the power of AI to create high-performance websites in record time where stunning design meets intelligent functionality. No boring templates, just pure magic.
             </p>
           </div>
 
@@ -412,7 +411,7 @@ export default function App() {
         <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-16 relative z-10">
           {/* Left Side Header */}
           <div className="lg:w-1/2">
-            <p className="text-zinc-500 font-bold uppercase tracking-wider text-sm mb-4">/ OUR MAGIC TRICKS</p>
+            <p className="text-zinc-500 font-bold uppercase tracking-wider text-sm mb-4">What We Do</p>
             <h2 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.1]">
               Cool Stuff We Build <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-red-400">For Your Business</span>
             </h2>
@@ -421,7 +420,7 @@ export default function App() {
           {/* Right Side Description & Controls */}
           <div className="lg:w-1/3 flex flex-col justify-end lg:pt-8">
             <p className="text-zinc-400 text-lg mb-8 leading-relaxed font-light">
-              At MAGIC.AI, we know every business is unique. That's why we don't do boring templates. We build custom, super-fast sites that work like magic for you.
+              We don’t just design websites, we create powerful digital experiences that help your business grow.
             </p>
             <div className="flex items-center gap-4">
               <button 
