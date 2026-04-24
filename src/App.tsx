@@ -753,6 +753,176 @@ export default function App() {
         </div>
       </section>
 
+      {/* Portfolio Section */}
+      <section className="py-32 relative bg-black overflow-hidden flex flex-col items-center border-t border-zinc-900">
+        {/* Background glowing orbs */}
+        <AnimatedOrb positionAndTransform="top-1/4 right-0 translate-x-1/3" size="w-[600px] h-[600px]" color="bg-indigo-600/10" mousePosition={mousePosition} intensity={50} />
+        <AnimatedOrb positionAndTransform="bottom-0 left-0 -translate-x-1/3" size="w-[400px] h-[400px]" color="bg-purple-500/10" mousePosition={mousePosition} intensity={-60} animationClass="animate-orb-float-reverse" />
+
+        {/* Header with Floating Icons */}
+        <div className="text-center max-w-4xl mb-16 px-6 relative z-10 w-full">
+          {/* Floating Icons mimicking the screenshot */}
+          <div 
+            className="hidden lg:flex absolute top-0 left-4 w-14 h-14 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl items-center justify-center -rotate-12 shadow-xl animate-bounce"
+            style={{ animationDuration: '4s' }}
+          >
+            <Cpu className="w-6 h-6 text-indigo-400" />
+          </div>
+          <div 
+            className="hidden lg:flex absolute top-20 right-4 w-12 h-12 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl items-center justify-center rotate-12 shadow-xl animate-bounce"
+            style={{ animationDuration: '5s', animationDelay: '1s' }}
+          >
+            <Rocket className="w-5 h-5 text-pink-400" />
+          </div>
+          <div 
+            className="hidden lg:flex absolute -bottom-10 left-16 w-10 h-10 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl items-center justify-center rotate-6 shadow-xl animate-bounce"
+            style={{ animationDuration: '6s', animationDelay: '0.5s' }}
+          >
+            <Shield className="w-4 h-4 text-emerald-400" />
+          </div>
+          <div 
+            className="hidden lg:flex absolute -bottom-5 right-16 w-14 h-14 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl items-center justify-center -rotate-6 shadow-xl animate-bounce"
+            style={{ animationDuration: '4.5s', animationDelay: '2s' }}
+          >
+            <Sparkles className="w-6 h-6 text-yellow-400" />
+          </div>
+
+          <div className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 text-sm text-zinc-300 font-medium mb-6">
+            Our Portfolio
+          </div>
+          <h2 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
+            Empowering Ambitions <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400">Through Magic Work</span>
+          </h2>
+          <p className="text-zinc-400 text-lg md:text-xl font-light max-w-2xl mx-auto mb-10">
+            Discover flexible, world-class digital platforms designed to elevate your brand and accelerate your journey.
+          </p>
+
+          <div className="flex items-center justify-center gap-4">
+            <button 
+              onClick={() => portfolioCarousel.handleScrollBtn('left')} 
+              className="w-14 h-14 rounded-full border border-zinc-700 bg-white/5 backdrop-blur-md flex items-center justify-center hover:bg-white hover:text-black transition-colors"
+              aria-label="Previous project"
+            >
+              <ArrowLeft className="w-6 h-6" />
+            </button>
+            <button 
+              onClick={() => portfolioCarousel.handleScrollBtn('right')} 
+              className="w-14 h-14 rounded-full border border-zinc-700 bg-white/5 backdrop-blur-md flex items-center justify-center hover:bg-white hover:text-black transition-colors"
+              aria-label="Next project"
+            >
+              <ArrowRight className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+
+        {/* Portfolio Carousel */}
+        <div 
+          ref={portfolioCarousel.containerRef}
+          {...portfolioCarousel.handlers}
+          className="flex items-center gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory px-[7.5vw] lg:px-[20vw] py-12 w-full touch-pan-x select-none relative z-10"
+        >
+          {portfolioProjects.map((project, idx) => (
+            <div 
+              key={project.id}
+              className={`w-[85vw] lg:w-[60vw] max-w-[900px] shrink-0 rounded-[1.5rem] overflow-hidden relative snap-center cursor-grab active:cursor-grabbing transition-all duration-700 ease-out border border-white/10 flex flex-col bg-zinc-950 ${
+                idx === portfolioCarousel.activeIndex 
+                  ? 'scale-100 opacity-100 z-10 shadow-[0_0_50px_rgba(30,10,50,0.5)] blur-none' 
+                  : 'scale-[0.85] opacity-40 z-0 blur-[3px]'
+              }`}
+              style={{ height: 'auto', aspectRatio: '16/10' }} // Browser window aspect ratio
+            >
+              {/* Browser Native Top Bar */}
+              <div className="h-10 md:h-12 bg-[#1A1A1A] flex items-center px-4 md:px-6 gap-2 w-full border-b border-white/5 shrink-0">
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
+                  <div className="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
+                  <div className="w-3 h-3 rounded-full bg-[#27C93F]"></div>
+                </div>
+                <div className="flex-1 flex justify-center">
+                  <div className="hidden md:flex items-center justify-center bg-black/50 border border-white/5 rounded-md px-16 py-1.5 text-xs text-zinc-500 font-mono tracking-wide">
+                    {project.url}
+                  </div>
+                </div>
+              </div>
+              
+              {/* Mockup Image */}
+              <div className="w-full flex-1 relative bg-zinc-900 overflow-hidden">
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover object-top transition-transform duration-[10s] ease-linear group-hover:object-bottom"
+                  referrerPolicy="no-referrer" 
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="py-32 px-6 md:px-10 bg-black relative border-t border-zinc-900 overflow-hidden">
+        {/* Background glowing orbs */}
+        <AnimatedOrb positionAndTransform="top-1/4 right-1/4" size="w-[500px] h-[500px]" color="bg-rose-500/10" mousePosition={mousePosition} intensity={30} />
+        <AnimatedOrb positionAndTransform="bottom-1/4 left-1/4" size="w-[400px] h-[400px]" color="bg-orange-500/10" mousePosition={mousePosition} intensity={-40} animationClass="animate-orb-float-reverse" />
+
+        <div className="max-w-6xl mx-auto relative z-10 flex flex-col items-center">
+          <div className="text-center mb-20 max-w-3xl">
+            <div className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 text-sm text-zinc-300 font-medium mb-6">
+              How It Works
+            </div>
+            <h2 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
+              Three Steps To <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-rose-400 to-purple-400">Digital Perfection</span>
+            </h2>
+            <p className="text-zinc-400 text-lg font-light leading-relaxed">
+              We've stripped away the complexity. Our streamlined process is built for speed, transparency, and delivering jaw-dropping results.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full relative">
+            {/* Connecting Line (Desktop) */}
+            <div className="hidden md:block absolute top-[4.5rem] left-[15%] right-[15%] h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+            {/* Step 1 */}
+            <div className="flex flex-col items-center text-center relative z-10 group">
+              <div className="w-36 h-36 rounded-full border border-zinc-800 bg-zinc-950/50 backdrop-blur-xl flex items-center justify-center mb-8 relative group-hover:border-orange-500/50 group-hover:bg-orange-500/10 transition-colors duration-500">
+                <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-black font-bold border-4 border-black z-20">1</div>
+                <MessageSquare className="w-12 h-12 text-zinc-400 group-hover:text-orange-400 transition-colors duration-500" />
+              </div>
+              <h3 className="text-2xl font-bold mb-4 group-hover:text-white transition-colors">Discovery & Strategy</h3>
+              <p className="text-zinc-500 font-light leading-relaxed">
+                We kick things off with a deep dive into your vision, goals, and audience. We establish the roadmap and map out exactly what success looks like.
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="flex flex-col items-center text-center relative z-10 group mt-12 md:mt-0">
+              <div className="w-36 h-36 rounded-full border border-zinc-800 bg-zinc-950/50 backdrop-blur-xl flex items-center justify-center mb-8 relative group-hover:border-rose-500/50 group-hover:bg-rose-500/10 transition-colors duration-500">
+                <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-rose-500 flex items-center justify-center text-black font-bold border-4 border-black z-20">2</div>
+                <Wand2 className="w-12 h-12 text-zinc-400 group-hover:text-rose-400 transition-colors duration-500" />
+              </div>
+              <h3 className="text-2xl font-bold mb-4 group-hover:text-white transition-colors">The Magic Happens</h3>
+              <p className="text-zinc-500 font-light leading-relaxed">
+                Our team gets to work designing and building your bespoke digital platform. You get regular updates and full transparency as your idea comes to life.
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="flex flex-col items-center text-center relative z-10 group mt-12 md:mt-0">
+              <div className="w-36 h-36 rounded-full border border-zinc-800 bg-zinc-950/50 backdrop-blur-xl flex items-center justify-center mb-8 relative group-hover:border-purple-500/50 group-hover:bg-purple-500/10 transition-colors duration-500">
+                 <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-black font-bold border-4 border-black z-20">3</div>
+                <Rocket className="w-12 h-12 text-zinc-400 group-hover:text-purple-400 transition-colors duration-500" />
+              </div>
+              <h3 className="text-2xl font-bold mb-4 group-hover:text-white transition-colors">Launch & Scale</h3>
+              <p className="text-zinc-500 font-light leading-relaxed">
+                We meticulously test everything before hitting the big red deploy button. You receive a blazing-fast platform and the keys to start scaling immediately.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* Pricing Section */}
       <section className="py-32 px-6 md:px-10 bg-black relative border-t border-zinc-900 overflow-hidden">
         {/* Background glowing orbs to enhance glassmorphism */}
