@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, Sparkles, ChevronDown, Plus, Wand2, Hexagon, Globe, Cpu, Triangle, Cloud, Zap, Square, Circle, Rocket, Search, RefreshCw, MousePointerClick, MessageSquare, Smartphone, Shield, Play, Star, Twitter, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import Spline from '@splinetool/react-spline';
 import { useCarouselScroll } from './hooks/useCarouselScroll';
 
 const logosRow1 = [
@@ -176,24 +177,24 @@ const pricingPlans = [
 
 const faqs = [
   {
-    question: "How long does a typical project take?",
-    answer: "Most of our magic happens within 2 to 4 weeks depending on the complexity of the project. We prioritize speed without sacrificing that pixel-perfect quality. Custom web platforms are faster, while full e-commerce or SaaS dashboards may take the full 4 weeks."
+    question: "How long does it take to complete my website?",
+    answer: "Most projects are completed within 72 hours, depending on complexity."
   },
   {
-    question: "Do you use templates or custom designs?",
-    answer: "We build everything completely from scratch using modern frameworks like React and Next.js. No boring templates, no bloated themes holding back your performance. Your business is unique, and your digital presence should be completely bespoke."
+    question: "Do I need technical knowledge?",
+    answer: "Not at all. We handle everything—from design to launch."
   },
   {
-    question: "What if I am not happy with the designs?",
-    answer: "We don't vanish after the first draft! We work closely with you through iterative, real-time feedback loops. Depending on your plan, we offer rounds of revisions or unlimited revisions. We adjust, tweak, and refine until you're absolutely obsessed with the final result."
+    question: "Will my website be mobile-friendly?",
+    answer: "Absolutely. Every website is fully responsive across all devices."
   },
   {
-    question: "Do you offer post-launch support and maintenance?",
-    answer: "Yes! Our relationship doesn't end when your site goes live. We offer ongoing maintenance retainers to ensure your site stays blazing fast, perfectly secure, and up-to-date. Think of us as your continuously operating digital partner."
+    question: "Can I request revisions?",
+    answer: "Yes. We include revision rounds to ensure your satisfaction."
   },
   {
-    question: "Do you also help with copywriting and content?",
-    answer: "Absolutely. Great design without great copy is just a pretty picture. We can collaborate with you to craft compelling, conversion-focused copy that aligns with your brand voice and perfectly guides visitors towards making a purchase or booking a call."
+    question: "Do you provide support after launch?",
+    answer: "Yes. We offer ongoing support options to help you scale and maintain your site."
   }
 ];
 
@@ -246,17 +247,9 @@ export default function App() {
     <div className="bg-black text-white font-sans selection:bg-white selection:text-black hover:bg-black/99 transition-colors">
       {/* Hero Section */}
       <div className="min-h-screen flex flex-col p-6 md:p-10 relative overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://i.ibb.co/nq149LJc/1775727695139.png"
-            alt="Hero Background"
-            className="w-full h-full object-cover opacity-60"
-            referrerPolicy="no-referrer"
-          />
-          {/* Gradient overlay to ensure text readability on the left */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40"></div>
+        {/* Background Animation */}
+        <div className="absolute inset-y-0 right-0 w-full lg:w-1/2 z-0">
+          <Spline scene="https://prod.spline.design/inqRQY4bTUPQyqof/scene.splinecode" className="w-full h-full" />
         </div>
 
         {/* Header */}
